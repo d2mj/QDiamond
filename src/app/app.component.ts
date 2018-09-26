@@ -20,15 +20,16 @@ export class AppComponent implements OnInit {
   placeDiamondsIntoCells() {
     while (this.diamondColPos.length < 8) {
       const randomnumber = Math.floor(Math.random() * 8);
-      if (this.diamondColPos.indexOf(randomnumber) > -1) {
-        continue;
-      }
+      // if (this.diamondColPos.indexOf(randomnumber) > -1) {
+      //   continue;
+      // }
       this.diamondColPos[this.diamondColPos.length] = randomnumber;
     }
 
     while (this.diamondRowPos.length < 8) {
       const randomnumber = Math.floor(Math.random() * 8);
-      if (this.diamondRowPos.indexOf(randomnumber) > -1) {
+      if (this.diamondRowPos.indexOf(randomnumber) > -1 && this.diamondColPos[this.diamondRowPos.indexOf(randomnumber)] ===
+        this.diamondColPos[this.diamondRowPos.length]) {
         continue;
       }
       this.diamondRowPos[this.diamondRowPos.length] = randomnumber;
