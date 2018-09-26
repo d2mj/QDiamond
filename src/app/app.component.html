@@ -3,9 +3,14 @@
   <h1>
      Diamond Sweeper
   </h1>
-  <div style="display: inline-table;">
-    <app-container style=" float: left;" [size]="size" [diamondColPos]="diamondColPos" [diamondRowPos]="diamondRowPos" [cIndex]="i" *ngFor="let i of size"></app-container>
+  <div style="display: inline-table;" *ngIf="showGameBoard">
+    <app-container style=" float: left;" [size]="size" 
+      [diamondColPos]="diamondColPos" [diamondRowPos]="diamondRowPos" 
+      [cIndex]="i"
+      (dCount)="dCount($event)" (visitCount)="visitCount($event)" *ngFor="let i of size"></app-container>
   </div>
+  <button *ngIf="showGameBoard" (click)="stop()">STOP</button>
+  <button *ngIf="!showGameBoard" (click)="start()">START</button>
 </div>
 <!-- <h2>Game </h2> -->
 
