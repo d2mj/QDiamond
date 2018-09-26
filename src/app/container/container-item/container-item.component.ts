@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-container-item',
@@ -11,15 +11,21 @@ export class ContainerItemComponent implements OnInit {
   @Input() cIndex;
   @Input() diamondColPos;
   @Input() diamondRowPos;
+
+  @Output() dCount = new EventEmitter<any>();
+  @Output() visitCount = new EventEmitter<any>();
   @ViewChild('cell') cell: ElementRef;
-  cellVisited = [];
+  isCellVisited = false;
 
-  constructor() { }
+  constructor() {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
 
   clickSquare() {
-    if (this.cellVisited.indexOf(this.rIndex + '' + this.cIndex) > -1) {
+    if (this.isCellVisited) {
       console.log('cell is already visited');
       return;
     }
@@ -32,13 +38,15 @@ export class ContainerItemComponent implements OnInit {
         console.log('diamond found');
         this.cell.nativeElement.style.backgroundImage = 'url(../../../assets/diamond.png)';
         diamondFound = true;
+        this.dCount.emit('');
         break;
       }
     }
     if (!diamondFound) {
       this.cell.nativeElement.style.backgroundImage = 'none';
     }
-    this.cellVisited.push(this.rIndex + '' + this.cIndex);
+    this.isCellVisited = true;
+    this.visitCount.emit('');
   }
 
 }
