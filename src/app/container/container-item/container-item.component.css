@@ -1,0 +1,18 @@
+.cell {
+	height: 50px;
+	width: 50px;
+	background-size: 50px 50px;
+	background-image: url(../../../assets/question.png);
+}
+
+.diamond {
+	background-image: url(../../../assets/diamond.png);
+}
+
+.arrow {
+	background-image: url(../../../assets/arrow.png);
+}
+
+/* .unknown {
+	background-image: url(../../../assets/question.png);
+} */
